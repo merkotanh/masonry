@@ -1,0 +1,8 @@
+#pins.transitions-enabled
+  - @images.each do |image|
+    .box.panel.panel-default
+      %h2= link_to image.title, image
+      = image_tag image.image.url
+      = link_to 'Edit', edit_pin_path(image.id)
+      = link_to 'Delete', pin_path(image.id), method: :delete, data: { confirm: 'Are u sure?' }
+      = link_to 'New image', new_pin_path

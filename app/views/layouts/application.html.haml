@@ -1,0 +1,26 @@
+!!! 5
+%html
+%head
+  %title Iboard
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    %nav.navbar.navbar-expand-md.navbar-light.bg-light
+      %ul.navbar-nav
+        %a.navbar-brand{ href: "/"} Gallery
+        %li.nav-item.dropdown
+          %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "true", href: root_path, "aria-haspopup" => "true", "data-toggle" => "dropdown"}
+            = 'Gallery'
+          .dropdown-menu
+            = link_to 'Images', pins_path, class: 'nav-link'
+            .dropdown-divider
+            - @images.each do |image|
+              %a.dropdown-item{ href: pin_path(image.id)} 
+                = image.title
+       
+
+
+    - flash.each do |name, msg|
+      = content_tag :div, msg, class: 'alert alert_info'
+    = yield

@@ -1,0 +1,15 @@
+%h1 Edit image
+= form_for @image, :html => {:multipart => true} do |f|
+  = image_tag @image.ipath.url(:thumb), class:'img-fluid rounded'
+  %br
+  .form-group
+    = f.label :ipath
+    = f.file_field :ipath, class:'form-control'
+  .form-group
+    = f.label :image_title
+    = f.text_area :image_description, class:'form-control'
+  .form-group
+    = f.submit 'submit', class:'btn btn-light'
+    = link_to 'cancel', image_path, class:'btn btn-light'
+
+= link_to 'Cancel', image_path
